@@ -18,14 +18,15 @@
 #define PIN_ANODE_3 6
 
 
-#define PIN_SOCKET A4
-#define PIN_SOCKET_LED A5
+#define PIN_SOCKET A3
+#define PIN_SOCKET_LED A0
 
-#define PIN_ETHERNET_1 A0
-#define PIN_ETHERNET_2 A1
-#define PIN_ETHERNET_3 A2
-#define PIN_ETHERNET_4 A3
-#define PIN_ETHERNET_LED 13
+// #define PIN_ETHERNET_1 A0
+// #define PIN_ETHERNET_2 A1
+// #define PIN_ETHERNET_3 A2
+// #define PIN_ETHERNET_4 A3
+#define PIN_ETHERNET A2
+#define PIN_ETHERNET_LED A1
 
 #define ON_IK 0x1E
 #define OFF_IK 0x1F
@@ -101,10 +102,11 @@ void setup() {
 
   pinMode(PIN_SOCKET, INPUT);
 
-  pinMode(PIN_ETHERNET_1, INPUT);
-  pinMode(PIN_ETHERNET_2, INPUT);
-  pinMode(PIN_ETHERNET_3, INPUT);
-  pinMode(PIN_ETHERNET_4, INPUT);
+  // pinMode(PIN_ETHERNET_1, INPUT);
+  // pinMode(PIN_ETHERNET_2, INPUT);
+  // pinMode(PIN_ETHERNET_3, INPUT);
+  // pinMode(PIN_ETHERNET_4, INPUT);
+  pinMode(PIN_ETHERNET, INPUT);
 
   attachInterrupt(0, irIsr, FALLING);
   pinMode(PIN_POWER_LED, OUTPUT);
@@ -266,16 +268,7 @@ bool levelTwo(){
 
 
 bool _readEthernet(){
-  uint8_t res = 0;
-  uint8_t pins_ethernet[4] = {PIN_ETHERNET_1, PIN_ETHERNET_2, PIN_ETHERNET_3, PIN_ETHERNET_4};
-  for(int i = 0; i < 4; i++){
-    res = res << 1;
-    res += digitalRead(pins_ethernet[i]);
-  }
-  if (res == 0)
-    return true;
-  else
-    return false;
+  return !digitalRead(PIN_ETHERNET);
 }
 
 
