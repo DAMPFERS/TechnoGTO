@@ -6,7 +6,7 @@
 #define TIME_LEVEL_1 1200
 #define TIME_LEVEL_2 600
 #define TIME_LEVEL_3 1200
-#define PIN_KEY_SET 11
+#define PIN_KEY_SET A2
 
 #define PIN_ZERO_SECTION 7
 #define PIN_FIRST_SECTION 8
@@ -25,11 +25,11 @@
 // #define PIN_ETHERNET_2 A1
 // #define PIN_ETHERNET_3 A2
 // #define PIN_ETHERNET_4 A3
-#define PIN_ETHERNET A2
+#define PIN_ETHERNET A4
 #define PIN_ETHERNET_LED A1
 
-#define ON_IK 0x2F
-#define OFF_IK 0xF2
+#define ON_IK 0x5F
+#define OFF_IK 0xF5
 #define IK_INTERRUPT 2 // const
 #define PIN_POWER_LED 12
 

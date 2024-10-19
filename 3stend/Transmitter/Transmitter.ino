@@ -4,8 +4,8 @@
 #define PIN_OFF 5
 #define IK_PIN 3
 
-#define ON_IK 0x2F
-#define OFF_IK 0xF2
+#define ON_IK 0x3F
+#define OFF_IK 0xF3
 
 bool old_state_ON;
 bool old_state_OFF;
