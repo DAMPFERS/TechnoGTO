@@ -3,9 +3,11 @@
 
 
 #define CONST_TIME_FRAME_MS 1
-#define TIME_LEVEL_1 600
+#define CONST_TIME_FRAME_MkS 700
+
+#define TIME_LEVEL_1 1200
 #define TIME_LEVEL_2 600
-#define TIME_LEVEL_3 600
+#define TIME_LEVEL_3 1200
 #define PIN_KEY_SET 11
 
 #define PIN_ZERO_SECTION 7
@@ -18,13 +20,13 @@
 #define PIN_ANODE_3 6
 
 
-#define PIN_SOCKET A4
-#define PIN_SOCKET_LED A5
+#define PIN_SOCKET A1
+#define PIN_SOCKET_LED A0
 
-#define PIN_ETHERNET_1 A0
-#define PIN_ETHERNET_2 A1
-#define PIN_ETHERNET_3 A2
-#define PIN_ETHERNET_4 A3
+#define PIN_ETHERNET_1 A5
+#define PIN_ETHERNET_2 A4
+#define PIN_ETHERNET_3 A3
+#define PIN_ETHERNET_4 A2
 #define PIN_ETHERNET_LED 13
 
 #define ON_IK 0x1E
@@ -158,7 +160,7 @@ void loop() {
 
 
 void timeOutput(uint16_t t){
-  if (millis() - time_frame > CONST_TIME_FRAME_MS){
+  if (micros() - time_frame > CONST_TIME_FRAME_MkS){
     uint8_t i;
     for (uint16_t time_classic = t / 60 * 100 + t % 60, i = 0; i <= index_anode; time_classic /= 10, i++)
       t = time_classic % 10;
@@ -167,7 +169,7 @@ void timeOutput(uint16_t t){
     if (++index_anode > 3){
       index_anode = 0;
     } 
-    time_frame = millis();
+    time_frame = micros();
   }
   return;
 }

@@ -1,8 +1,11 @@
 #include <NecEncoder.h>
 
-#define ON 4
-#define OFF 5
+#define PIN_ON 4
+#define PIN_OFF 5
 #define IK_PIN 3
+
+#define ON 0x1E
+#define OFF 0x1F
 
 bool old_state_ON;
 bool old_state_OFF;
@@ -10,26 +13,26 @@ NecEncoder enc(IK_PIN);
 
 
 void setup() {
-  pinMode(ON, INPUT_PULLUP);
-  pinMode(OFF, INPUT_PULLUP);
+  pinMode(PIN_ON, INPUT_PULLUP);
+  pinMode(PIN_OFF, INPUT_PULLUP);
   pinMode(13, OUTPUT);
   Serial.begin(9600);
-  old_state_ON = !digitalRead(ON);
-  old_state_OFF = !digitalRead(OFF);
+  old_state_ON = !digitalRead(PIN_ON);
+  old_state_OFF = !digitalRead(PIN_OFF);
 }
 
 void loop() {
-  bool new_state_ON = !digitalRead(ON);
-  bool new_state_OFF = !digitalRead(OFF);
+  bool new_state_ON = !digitalRead(PIN_ON);
+  bool new_state_OFF = !digitalRead(PIN_OFF);
 
   if ((new_state_ON == HIGH) && (old_state_ON == LOW)){
-    enc.send(0x1E, 0x1E);
+    enc.send(ON, ON);
     Serial.println("signal: ON");
     digitalWrite(13, HIGH);
     delay(10);
   }
   else if ((new_state_OFF == HIGH) && (old_state_OFF == LOW)){
-    enc.send(0x1F, 0x1F);
+    enc.send(OFF, OFF);
     Serial.println("signal: OFF");
     digitalWrite(13, LOW);
     delay(10);
