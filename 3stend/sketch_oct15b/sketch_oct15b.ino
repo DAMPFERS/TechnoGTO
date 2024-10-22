@@ -3,7 +3,7 @@
 
 
 #define CONST_TIME_FRAME_MS 1
-#define CONST_TIME_FRAME_MkS 750
+#define CONST_TIME_FRAME_MkS 3500
 
 #define TIME_LEVEL_1 1200
 #define TIME_LEVEL_2 600
