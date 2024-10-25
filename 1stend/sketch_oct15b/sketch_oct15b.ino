@@ -113,6 +113,18 @@ void setup() {
 
   old_state_key_set = !digitalRead(PIN_KEY_SET);
   Serial.begin(9600);
+
+  // digitalWrite(PIN_SOCKET_LED, 1);
+  // digitalWrite(PIN_ETHERNET_LED, 1);
+  // digitalWrite(PIN_ETHERNET_LED, 1);
+  // digitalWrite(PIN_POWER_LED, 1);
+  // while (1) {
+  // Serial.print("Socket: ");
+  // Serial.println(_readSocket());
+  // Serial.print("Ethernet: ");
+  // Serial.println(_readEthernet());
+  // delay(500);
+  // }
 }
 
 void loop() {
